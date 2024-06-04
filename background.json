@@ -1,0 +1,7 @@
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "openInGoogleMaps") {
+    const address = request.address;
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+    chrome.tabs.create({ url: mapsUrl });
+  }
+});
